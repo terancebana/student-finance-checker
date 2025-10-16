@@ -19,11 +19,35 @@ export const renderTable = (transactions) => {
     const isCaseSensitive = document.getElementById('case-sensitive-toggle').checked;
     const regex = search.compileRegex(searchInput, isCaseSensitive ? '' : 'i');
 
-    if (transactions.length === 0) {
+    if (!Array.isArray(transactions) || transactions.length === 0) {
         elements.tbody.innerHTML = '<tr><td colspan="5">No transactions found.</td></tr>';
         return;
     }
-    elements.tbody.innerHTML = transactions.map(t => `
+
+    elements.tbody.innerHTML = transactions.map(t => {
+        const desc = t.description ? search.highlight(t.description, regex) : '';
+        const cat = t.category ? search.highlight(t.category, regex) : '';
+        const date = t.date || '';
+        const amt = typeof t.amount === 'number' && !isNaN(t.amount) ? `$${t.amount.toFixed(2)}` : '';
+        return `
+            <tr data-id="${t.id}">
+                <td data-label="Description">${desc}</td>
+                <td data-label="Category">${cat}</td>
+                <td data-label="Date">${date}</td>
+                <td data-label="Amount">${amt}</td>
+                <td data-label="Actions">
+                    <button class="edit-btn" aria-label="Edit ${desc}">Edit</button>
+                    <button class="delete-btn" aria-label="Delete ${desc}">Delete</button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    if (transactions.length === 0) {
+        elements.tbody.innerHTML = diagnosticRow + '<tr><td colspan="5">No transactions found.</td></tr>';
+        return;
+    }
+    elements.tbody.innerHTML = diagnosticRow + transactions.map(t => `
         <tr data-id="${t.id}">
             <td data-label="Description">${search.highlight(t.description, regex)}</td>
             <td data-label="Category">${search.highlight(t.category, regex)}</td>
