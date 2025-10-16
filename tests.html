@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validator Tests</title>
+    <style> body { font-family: monospace; padding: 2rem; } .pass { color: green; } .fail { color: red; font-weight: bold; } </style>
+</head>
+<body>
+    <h1>Validator Regex Tests</h1>
+    <div id="results"></div>
+    <script type="module">
+        import { validators } from './scripts/validators.js';
+        const resultsEl = document.getElementById('results');
+        const tests = [];
+
+        const assert = (desc, cond) => tests.push(`<div class="${cond ? 'pass' : 'fail'}">${cond ? 'PASS' : 'FAIL'}: ${desc}</div>`);
+
+        // Description Tests
+        assert('Description: Valid', validators.description('Valid text'));
+        assert('Description: Fails with leading space', !validators.description(' invalid'));
+        assert('Description: Fails with trailing space', !validators.description('invalid '));
+
+        // Amount Tests
+        assert('Amount: Valid integer', validators.amount(123));
+        assert('Amount: Valid decimal', validators.amount(12.34));
+        assert('Amount: Valid zero', validators.amount(0));
+        assert('Amount: Fails with leading zero', !validators.amount('05'));
+        assert('Amount: Fails with >2 decimal places', !validators.amount(12.345));
+
+        // Date Tests
+        assert('Date: Valid date', validators.date('2025-10-16'));
+        assert('Date: Fails with invalid month', !validators.date('2025-13-16'));
+        assert('Date: Fails with wrong format', !validators.date('16-10-2025'));
+        
+        resultsEl.innerHTML = tests.join('');
+    </script>
+</body>
+</html>
