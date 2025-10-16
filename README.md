@@ -2,8 +2,8 @@
 
 A vanilla HTML, CSS, and JavaScript application designed to help students track their finances. This project was built to be fully responsive, accessible, and modular, without relying on any external frameworks.
 
-**Live Demo URL**: `https://<your-username>.github.io/<your-repository-name>/`
-**Repository URL**: `https://github.com/<your-username>/<your-repository-name>`
+**Live Demo URL**: `https://terancebana.github.io/student-finance-checker/`
+**Repository URL**: `https://github.com/terancebana/student-finance-checker`
 **Demo Video Link**: `[Your Unlisted YouTube/Vimeo Link Here]`
 
 ---
