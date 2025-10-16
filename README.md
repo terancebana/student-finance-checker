@@ -2,6 +2,11 @@
 
 A vanilla HTML, CSS, and JavaScript application designed to help students track their finances. This project was built to be fully responsive, accessible, and modular, without relying on any external frameworks.
 
+**Live Demo URL**: `https://<your-username>.github.io/<your-repository-name>/`
+**Repository URL**: `https://github.com/<your-username>/<your-repository-name>`
+**Demo Video Link**: `[Your Unlisted YouTube/Vimeo Link Here]`
+
+---
 ## ✨ Features Implemented
 
 * **Responsive UI**: Mobile-first design that adapts seamlessly to tablet and desktop screens.
@@ -14,6 +19,7 @@ A vanilla HTML, CSS, and JavaScript application designed to help students track 
 * **Robust Form Validation**: All form inputs are validated using regex to ensure data integrity.
 * **Full Accessibility (a11y)**: Built with semantic HTML, full keyboard navigation, visible focus states, a "skip-to-content" link, and ARIA attributes for an inclusive user experience.
 
+---
 ## 🗂️ Regex Catalog
 
 The following regular expressions are used for form validation:
@@ -31,6 +37,7 @@ The following regular expressions are used for form validation:
     * **Purpose**: An example search pattern to find accidental duplicate words using a back-reference (`\1`).
     * **Example**: Finds "the the" in a description like "Lunch at the the cafe".
 
+---
 ## ⌨️ Keyboard Navigation Map
 
 * **`Tab`**: Move focus to the next interactive element.
@@ -39,12 +46,14 @@ The following regular expressions are used for form validation:
 * **`Escape`**: Close the Add/Edit Transaction modal dialog.
 * **`Space`**: Activate a focused button.
 
+---
 ## ♿ Accessibility Notes
 
 * **Semantic Landmarks**: Uses `<header>`, `<main>`, `<nav>`, and `<footer>` for clear page structure.
 * **Focus Management**: A "skip-to-content" link is provided, and all interactive elements have a clear `:focus-visible` style.
 * **ARIA Live Regions**: Budget status changes and confirmation messages are announced to screen readers to provide critical feedback.
 
+---
 ## 🧪 How to Run Tests
 
 The regular expression validators can be tested easily:
